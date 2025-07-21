@@ -1,7 +1,7 @@
 import authentication from "./middlewares/auth";
 import express from "express";
 import Jwt from "jsonwebtoken";
-import { secret_key } from "./middlewares/auth";
+import { my_secret_key } from "./middlewares/auth";
 import { Request, Response } from "express";
 import { users } from "../utils/userData";
 import customMiddleware from "./middlewares/customMiddleware";
@@ -29,7 +29,7 @@ app.post("/addUser", (req: Request, res: Response) => {
     email,
   };
 
-  const token = Jwt.sign(newUser, secret_key, { expiresIn: "1h" });
+  const token = Jwt.sign(newUser, my_secret_key, { expiresIn: "1h" });
   users.push(newUser);
 
   res.json({ token });

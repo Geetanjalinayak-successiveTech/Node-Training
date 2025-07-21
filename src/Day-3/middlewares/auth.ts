@@ -1,11 +1,12 @@
 import  { Request, Response, NextFunction } from "express";
 import Jwt, { JwtPayload } from "jsonwebtoken";
+import { secret_key } from "../../utils/config";
 
 export interface AuthenticatedReq extends Request {
   token?: string | JwtPayload;
 }
 
-export const secret_key = "my_secret_key";
+export const my_secret_key = secret_key ;
 
 export default function authentication(
   req: AuthenticatedReq,
@@ -20,7 +21,7 @@ export default function authentication(
 
   const token = auth?.split(" ")[1]!;
   try {
-    const decoded = Jwt.verify(token, secret_key);
+    const decoded = Jwt.verify(token, my_secret_key);
     req.token = decoded;
     next();
   } catch (error) {
