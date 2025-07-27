@@ -1,0 +1,12 @@
+import mongoose from "mongoose";
+
+const registerUserSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+
+export const registerUserModel = mongoose.model(
+  "registerUserModel",
+  registerUserSchema
+);
