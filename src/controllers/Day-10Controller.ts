@@ -73,7 +73,7 @@ export const adminLogin = async(req:Request, res:Response)=>{
       return res.status(400).json({ meassage: "user does not exist" });
     }
 
-    const pass = await bcrypt.compare(req.body.password, user.password);
+    const pass =  bcrypt.compare(req.body.password, user.password);
     if (!pass) {
       return res.status(400).json({ message: "Invalid Password" });
     }
