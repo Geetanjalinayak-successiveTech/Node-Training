@@ -1,9 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log("SECRET KEY:", process.env.SUPER_SECRET_KEY);
-
-
 import ConnectDB from "../config/UserDB";
 
 import app from "./app";
